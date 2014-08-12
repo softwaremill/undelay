@@ -46,7 +46,7 @@ Undelay, provides combinator which allows you do specify a maximum duration of t
 
 ```scala
 import undelay._
-val shortDivision = longDivision.with(1.second)
+val shortDivision = longDivision.within(1.second)
 shortDivision.onComplete {
   case res => println(s"should division completed with result of $res")
 }
@@ -54,5 +54,15 @@ shortDivision.onComplete {
 
 The `undelay` package defines an implicit value class called `Complete` which takes a single future argument. Complete instances may declare
 a finite duration suitable to complete your task with the `within(deadline)` method. By default, the future will be failed a [TimeoutException](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/TimeoutException.html). You may optional provide your own exception defining function which takes the provided duration and returns a suitable Throwable. Calling `within` will not block your current thread, nor cost you future compability, nor throw an exception in your current thread.
+
+The wildcard import is there only for the asthetic of making it look like you can call `within` on a Scala future. If this is not your thing. You may
+be more explicit in your travels.
+
+```scala
+val shortDivision = undelay.Complete(longDivision).within(1.second)
+shortDivision.onComplete {
+  case res => println(s"should division completed with result of $res")
+```
+
 
 Doug Tangren (softprops) 2014
