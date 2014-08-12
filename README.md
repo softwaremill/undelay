@@ -7,7 +7,7 @@
 ### long division
 
 Scala [Futures](http://www.scala-lang.org/api/current/index.html#scala.concurrent.Future) provide a nice interface referencing
-a deferred value. This deferrable will _not_ make your code run faster. A slow operation scheduled in a Future will result in a future
+a deferred value. This deferral will _not_ make your slow operation run any faster. A slow operation scheduled in a Future will result in a future
 that will be slow to satisfy.
 
 ```scala
@@ -53,9 +53,9 @@ shortDivision.onComplete {
 ```
 
 The `undelay` package defines an implicit value class called `Complete` which takes a single future argument. Complete instances may declare
-a finite duration suitable to complete your task with the `within(deadline)` method. By default, the future will be failed a [TimeoutException](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/TimeoutException.html). You may optional provide your own exception defining function which takes the provided duration and returns a suitable Throwable. Calling `within` will not block your current thread, nor cost you future compability, nor throw an exception in your current thread.
+a finite duration suitable to complete your task with the `within(deadline)` method. By default, the future will be failed with a [TimeoutException](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/TimeoutException.html). You may optional provide your own exception defining function which takes the provided duration and returns a suitable Throwable. Calling `within` will not block your current thread, nor cost you future compatibility, nor throw an exception in your current thread.
 
-The wildcard import is there only for the asthetic of making it look like you can call `within` on a Scala future. If this is not your thing. You may
+The wildcard import is there only for the aesthetic of making it look like you can call `within` on a Scala future. If this is not your thing, you may
 be more explicit in your travels.
 
 ```scala
