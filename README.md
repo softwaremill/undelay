@@ -55,7 +55,16 @@ shortDivision.onComplete {
 The `undelay` package defines an implicit value class called `Complete` which takes a single future argument. Complete instances may declare
 a finite duration suitable to complete your task with the `within(deadline)` method. By default, the future will be failed with a [TimeoutException](http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/TimeoutException.html). You may optional provide your own exception defining function which takes the provided duration and returns a suitable Throwable. Calling `within` will not block your current thread, nor cost you future compatibility, nor throw an exception in your current thread.
 
-The wildcard import is there only for the aesthetic of making it look like you can call `within` on a Scala future. If this is not your thing, you may
+```scala
+val recovery = shortDivsion.recover {
+  case e: TimeoutException => checkNeighborsAnswer()
+}
+recovery.onComplete {
+  case res => println(s"we got $res quickly without blocking and without interupting the current thread")
+}
+```
+
+The wildcard import above is there only for the aesthetic of making it look like you can call `within` on a Scala future. If this is not your thing, you may
 be more explicit in your travels.
 
 ```scala
