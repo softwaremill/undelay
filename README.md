@@ -62,6 +62,7 @@ be more explicit in your travels.
 val shortDivision = undelay.Complete(longDivision).within(1.second)
 shortDivision.onComplete {
   case res => println(s"should division completed with result of $res")
+}
 ```
 
 
