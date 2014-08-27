@@ -1,6 +1,6 @@
 # undelay
 
-> You can't stop the future but you _can_ ask it to move a bit more quickly
+> You can't stop the future but you can always move to the fast lane
 
 # usage
 
