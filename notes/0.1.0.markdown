@@ -1,0 +1,24 @@
+## initial release
+
+The initial release of a library that does essentially the opposite of [odelay](https://github.com/softprops/odelay#readme). Where odelay adds delay to operations for a given FiniteDuration, undelay provides an interface to shorten the perceived time it takes for a future to complete to a given FiniteDuration.
+
+```scala
+import undelay._
+val quick = slowFuture.within(100 millis)
+quick.onComplete(println)
+```
+
+Calling within above decorates the future in a `undelay.Complete.within` call which will return a new future that will be satisfied by either the provided future or it will be failed after 100 milliseconds.
+
+If you'd rather skip the implicit decoration, you may call wrap the future yourself. The following example translates to the same behavior above
+
+```scala
+val quick = undelay.Complete(slowFuture).within(100 millis)
+quick.onComplete(println)
+```
+
+The resulting future is intended for use for clients that need responded to quickly. The underlying future may continue on its completion journey and will not be cancelled or interupted in any way.
+
+For more information, see the project's [readme](https://github.com/softprops/undelay#readme)
+
+
