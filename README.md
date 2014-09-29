@@ -60,7 +60,7 @@ val recovery = shortDivsion.recover {
   case e: TimeoutException => checkNeighborsAnswer()
 }
 recovery.onComplete {
-  case res => println(s"we got $res quickly without blocking and without interupting the current thread")
+  case res => println(s"we got $res quickly without blocking and without interrupting the current thread")
 }
 ```
 

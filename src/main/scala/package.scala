@@ -5,7 +5,7 @@ import java.util.concurrent.TimeoutException
 
 package object undelay {
   implicit class Complete[+T](val future: Future[T]) extends AnyVal {
-    /** @return a future that will be gauranteed to be satisfied within the given deadline */
+    /** @return a future that will be guaranteed to be satisfied within the given deadline */
     def within(
       deadline: FiniteDuration,
       orElse: FiniteDuration => Throwable = timeout)
