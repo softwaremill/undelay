@@ -1,0 +1,21 @@
+{
+  "organization" : "me.lessis",
+  "name" : "undelay",
+  "version" : "0.1.0",
+  "description" : "Satisfy Scala Futures quickly",
+  "site" : "https://github.com/softprops/undelay/#readme",
+  "tags" : [ "async", "reactive", "non-blocking", "future" ],
+  "docs" : "",
+  "resolvers" : [ "http://dl.bintray.com/content/softprops/maven" ],
+  "dependencies" : [ {
+    "organization" : "me.lessis",
+    "name" : "odelay-core",
+    "version" : "0.1.0"
+  } ],
+  "scalas" : [ "2.10.4", "2.11.1" ],
+  "licenses" : [ {
+    "name" : "MIT",
+    "url" : "https://github.com/softprops/undelay/blob/0.1.0/LICENSE"
+  } ],
+  "sbt" : false
+}

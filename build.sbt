@@ -2,9 +2,9 @@ organization := "me.lessis"
 
 name := "undelay"
 
-version := "0.1.0-SNAPSHOT"
+version := "0.1.0"
 
-description := "Satisfy Scala Futures more quickly"
+description := "Satisfy Scala Futures quickly"
 
 libraryDependencies ++= Seq(
   "me.lessis" %% "odelay-core" % "0.1.0",
@@ -18,6 +18,16 @@ homepage := Some(url(s"https://github.com/softprops/${name.value}/#readme"))
 crossScalaVersions := Seq("2.10.4", "2.11.1")
 
 scalaVersion := crossScalaVersions.value.last
+
+seq(bintraySettings:_*)
+
+bintray.Keys.packageLabels in bintray.Keys.bintray := Seq("async", "reactive", "non-blocking", "future")
+
+seq(lsSettings:_*)
+
+LsKeys.tags in LsKeys.lsync := (bintray.Keys.packageLabels in bintray.Keys.bintray).value
+
+externalResolvers in LsKeys.lsync := (resolvers in bintray.Keys.bintray).value
 
 pomExtra := (
   <scm>
