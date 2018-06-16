@@ -6,8 +6,6 @@ organization := "com.softwaremill.undelay"
 
 name := "undelay"
 
-version := "0.2.0"
-
 description := "Satisfy Scala Futures quickly"
 
 libraryDependencies ++= Seq(
