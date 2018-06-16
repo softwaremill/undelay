@@ -5,7 +5,7 @@
 ## install
 
 ```scala
-libraryDependencies += "com.softwaremill.undelay" %% "undelay" % "0.1.0"
+libraryDependencies += "com.softwaremill.undelay" %% "undelay" % "0.2.0"
 ```
 
 ## usage
